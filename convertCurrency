@@ -1,71 +1,91 @@
 #include <iostream>
 
 using namespace std;
+/*This method takes initial currency the user wants to convert
+and multiples it with the exchange rate. This completes the 
+conversion from one current to another using its exchange rate*/
 
 double currencyConverter(double fromAmount, double exchangeRate){
     return fromAmount*exchangeRate;
 }
 
 int main() {
+//initialize variables for storing the conversion computation to be performed
     int conversionOption;
     int currencyOption;
     double amountToBeConverted;
     double convertedAmount;
     string sCurrency = " ";
-
+    
+//a list of exchange rates
     double usdRate = 5.19202;
     double eurRate = 5.82981;
     double gbpRate = 6.78460;
     double ngnRate = 0.01435;
-
+    
+//guide to user to choose the conversion type to be performed
     cout<<"Choose one of the following.\n 1. convert from other currencies to Gh¢\n 2. convert from Gh¢ to other currencies\n";
     cin>>conversionOption;
+    
+/*the block of switch case code is use to perform the computation for the conversion
+based on the user's input. if the user input 1 or 2, then a list currency options that
+can be computed on will show for the user to choose which on to use*/
 
     switch(conversionOption) {
         case 1 :
             cout << "\nConvert from .... to Gh¢.\n 1. USD($)\n 2. EUR(€)\n 3. GBP(£)\n 4. NGN(₦)\n";
             cin>>currencyOption;
+            
+/*based on the user's choice in the above code, the switch case below will be navigated through to find
+the corresponding choice to compute the conversion*/
 
             switch(currencyOption) {
-                case 1 :
+                case 1 ://conversion to USD
                     cout << "\nInput amount in USD($)";
                     cin>>amountToBeConverted;
                     convertedAmount = currencyConverter(amountToBeConverted,usdRate);
                     cout << "\nUSD($)"<<amountToBeConverted<<" = Gh¢"<<convertedAmount;
                     break;
-                case 2 :
+                    
+                case 2 ://Conversion to euros
                     cout << "\nInput amount in EUR(€)";
                     cin>>amountToBeConverted;
                     convertedAmount = currencyConverter(amountToBeConverted,eurRate);
                     cout << "\nEUR(€)"<<amountToBeConverted<<" = Gh¢"<<convertedAmount;
                     break;
-                case 3 :
+                    
+                case 3 ://conversion to pounds
                     cout << "\nInput amount in GBP(£)";
                     cin>>amountToBeConverted;
                     convertedAmount = currencyConverter(amountToBeConverted,gbpRate);
                     cout << "\nGBP(£)"<<amountToBeConverted<<" = Gh¢"<<convertedAmount;
                     break;
-                case 4 :
+                    
+                case 4 ://conversion to Niara
                     cout << "\nInput amount in NGN(₦)";
                     cin>>amountToBeConverted;
                     convertedAmount = currencyConverter(amountToBeConverted,ngnRate);
                     cout << "\nNGN(₦)"<<amountToBeConverted<<" = Gh¢"<<convertedAmount;
                     break;
-                default :
+                    
+                 /*this line of code will only execute if the user's input
+                 does not tally with any of our switch case statements*/
+                default : 
                     cout << "Invalid Input, Try again" << endl;
             }
 
-
-            break;
+        
         case 2 :
             double rate;
 
             cout << "\nConvert from Gh¢ to .... \n 1. USD($)\n 2. EUR(€)\n 3. GBP(£)\n 4. NGN(₦)\n";
             cin>>currencyOption;
-
+            
+            // takes input for the amount to be converted
             cout << "\nInput amount in Gh¢";
             cin>>amountToBeConverted;
-
+            
+            //checks user's choice of conversion then performs the needed conversion
             if(currencyOption == 1){
                 rate = (1/usdRate);
                 sCurrency = "USD($)";
@@ -79,7 +99,8 @@ int main() {
                 rate = (1/ngnRate);
                 sCurrency = "NGN(₦)";
             }
-
+            
+            //outputs the converted amount the user needed
             convertedAmount = currencyConverter(amountToBeConverted,rate);
             cout << "\nGh¢"<<amountToBeConverted<<" = "<<sCurrency<<convertedAmount;
             break;
