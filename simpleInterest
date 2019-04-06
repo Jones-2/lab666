@@ -1,0 +1,33 @@
+//
+// Created by Clerk on 06/04/2019.
+//
+
+#include <iostream>
+
+using namespace std;
+
+double simpleInterest(double principal, double interestRate, double timeInYears){
+    return (principal*interestRate*timeInYears)/100;
+}
+
+int main() {
+    double principal;
+    double interestRate;
+    double timeInYears;
+    string currency;
+
+    cout<<"Input the symbol of your currency: \n";
+    cin>>currency;
+
+    cout<<"Input Principal Amount in \n"<<currency<<" ";
+    cin>>principal;
+
+    cout<<"Input Interest Rate in %: \n";
+    cin>>interestRate;
+
+    cout<<"Input time in Years: \n";
+    cin>>timeInYears;
+
+    cout<<"The Simple Interest is "<< currency <<simpleInterest(principal,interestRate,timeInYears) ;
+}
+
