@@ -1,0 +1,91 @@
+#include <iostream>
+
+using namespace std;
+
+double currencyConverter(double fromAmount, double exchangeRate){
+    return fromAmount*exchangeRate;
+}
+
+int main() {
+    int conversionOption;
+    int currencyOption;
+    double amountToBeConverted;
+    double convertedAmount;
+    string sCurrency = " ";
+
+    double usdRate = 5.19202;
+    double eurRate = 5.82981;
+    double gbpRate = 6.78460;
+    double ngnRate = 0.01435;
+
+    cout<<"Choose one of the following.\n 1. convert from other currencies to Gh¢\n 2. convert from Gh¢ to other currencies\n";
+    cin>>conversionOption;
+
+    switch(conversionOption) {
+        case 1 :
+            cout << "\nConvert from .... to Gh¢.\n 1. USD($)\n 2. EUR(€)\n 3. GBP(£)\n 4. NGN(₦)\n";
+            cin>>currencyOption;
+
+            switch(currencyOption) {
+                case 1 :
+                    cout << "\nInput amount in USD($)";
+                    cin>>amountToBeConverted;
+                    convertedAmount = currencyConverter(amountToBeConverted,usdRate);
+                    cout << "\nUSD($)"<<amountToBeConverted<<" = Gh¢"<<convertedAmount;
+                    break;
+                case 2 :
+                    cout << "\nInput amount in EUR(€)";
+                    cin>>amountToBeConverted;
+                    convertedAmount = currencyConverter(amountToBeConverted,eurRate);
+                    cout << "\nEUR(€)"<<amountToBeConverted<<" = Gh¢"<<convertedAmount;
+                    break;
+                case 3 :
+                    cout << "\nInput amount in GBP(£)";
+                    cin>>amountToBeConverted;
+                    convertedAmount = currencyConverter(amountToBeConverted,gbpRate);
+                    cout << "\nGBP(£)"<<amountToBeConverted<<" = Gh¢"<<convertedAmount;
+                    break;
+                case 4 :
+                    cout << "\nInput amount in NGN(₦)";
+                    cin>>amountToBeConverted;
+                    convertedAmount = currencyConverter(amountToBeConverted,ngnRate);
+                    cout << "\nNGN(₦)"<<amountToBeConverted<<" = Gh¢"<<convertedAmount;
+                    break;
+                default :
+                    cout << "Invalid Input, Try again" << endl;
+            }
+
+
+            break;
+        case 2 :
+            double rate;
+
+            cout << "\nConvert from Gh¢ to .... \n 1. USD($)\n 2. EUR(€)\n 3. GBP(£)\n 4. NGN(₦)\n";
+            cin>>currencyOption;
+
+            cout << "\nInput amount in Gh¢";
+            cin>>amountToBeConverted;
+
+            if(currencyOption == 1){
+                rate = (1/usdRate);
+                sCurrency = "USD($)";
+            }else if( currencyOption == 2){
+                rate = (1/eurRate);
+                sCurrency = "EUR(€)";
+            }else if( currencyOption == 3){
+                rate = (1/gbpRate);
+                sCurrency = "GBP(£)";
+            }else if( currencyOption == 4){
+                rate = (1/ngnRate);
+                sCurrency = "NGN(₦)";
+            }
+
+            convertedAmount = currencyConverter(amountToBeConverted,rate);
+            cout << "\nGh¢"<<amountToBeConverted<<" = "<<sCurrency<<convertedAmount;
+            break;
+
+        default :
+            cout << "Invalid Input, Try again" << endl;
+    }
+
+}
